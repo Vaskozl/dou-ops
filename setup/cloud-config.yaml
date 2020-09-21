@@ -1,0 +1,47 @@
+#cloud-config
+
+hostname: pi0
+manage_etc_hosts: true
+
+locale: "en_US.UTF-8"
+timezone: "Europe/London"
+
+# Upgrade all packages on boot
+apt_preserve_sources_list: true
+apt_update: true
+apt_upgrade: true
+
+# Install extra packages
+packages:
+ - apt-transport-https
+ - ca-certificates
+ - software-properties-common
+ - python3
+ - python3-pip
+ - gnupg2
+
+users:
+  - name: pi
+    primary-group: users
+    shell: /bin/bash
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    groups: users
+    ssh_import_id: None
+    lock_passwd: true
+    ssh_pwauth: false
+    ssh_authorized_keys:
+      - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDfC4AI93hiLaWI5XEzGMLBjO/wy8riPS9+EvJM3ZOWfwam2unw04NqxQuOUf4FMdHyRNLdzZ8R3yx2HBKJdfNw8rzoK4DXnFKFJMB9UfHPSB8jw/71bTF38Ofu1K4SX1ZeEyeROVLEgNQCnUpniF/uHYQuYqvi2k2NMjoU1dx90y3vwDSR7+miDt1oj1pA3Qc3R0boMMnwhGrRyujZr2I0vxEDrVMdy64lD/0ll/UzxWgme0DwX2B42txLjrpUUlwhvxOObg4ISwW4ZmPsfpV66XOohtjFHJjNX/jG6LuDdPQAXvB3VvrNHs8o5Yovie7QdAtz4o22x2TltBGvYtLj vsz@touch"
+
+write_files:
+  - path: /etc/netplan/50-cloud-init.yaml
+    permissions: '0644'
+    content: |
+      network:
+        version: 2
+        ethernets:
+          eth0:
+            dhcp4: yes
+
+runcmd:
+  - [sudo, netplan, apply]
+  - [sudo, systemctl, restart, sshd]
