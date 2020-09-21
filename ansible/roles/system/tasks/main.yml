@@ -4,6 +4,19 @@
 # - name: Reset dpkg
 #   command: dpkg --configure -a
 
+# Contains log2ram, docker-ctop, bpytop
+- name: Add log2ram deb key.
+  apt_key:
+    id: 98B824A5FA7D3A10FDB225B7CA548A0A0312D8E6
+    url: https://azlux.fr/repo.gpg.key
+    state: present
+
+- name: Add log2ram deb repo
+  apt_repository:
+    repo: deb http://packages.azlux.fr/debian/ buster main
+    filename: azlux
+    state: present
+
 - name: Upgrade system
   apt:
     upgrade: dist
@@ -50,6 +63,9 @@
       - traceroute
       - unattended-upgrades
       - wget
+      - log2ram
+      - bpytop
+      - docker-ctop
     install_recommends: false
     update_cache: true
     # Need the force_apt_get until
@@ -95,30 +111,11 @@
     enabled: true
     state: started
 
-# Allowed to fail inorder to be idempotent
 - name: Stop log2ram service
   systemd:
     name: log2ram
-    state: stopped
+    enabled: true
   ignore_errors: true
-
-- name: Cloning log2ram from GitHub
-  git:
-    repo: https://github.com/azlux/log2ram.git
-    dest: /opt/log2ram
-    version: "{{ log2ram_version }}"
-
-- name: Changing perms of "/opt/log2ram/install.sh"
-  file:
-    dest: /opt/log2ram/install.sh
-    mode: a+x
-
-- name: Install log2ram
-  command: /bin/sh ./install.sh
-  args:
-    chdir: "/opt/log2ram"
-  register: log2ram
-  changed_when: '"Reboot to activate log2ram" in log2ram.stdout'
 
 - name: Copy log2ram.conf
   template:
@@ -136,12 +133,12 @@
     path: "{{ item }}"
     state: touch
   with_items:
-    - /boot/firmware/nobtcmd.txt
+    - /boot/firmware/cmdline.txt
     - /boot/firmware/syscfg.txt
 
 - name: Enable required cgroup features and disable IPv6
   lineinfile:
-    path: /boot/firmware/nobtcmd.txt
+    path: /boot/firmware/cmdline.txt
     backrefs: true
     regexp: '^(.*fixrtc)$'
     line: '\1 ipv6.disable=1 cgroup_memory=1 cgroup_enable=memory'
