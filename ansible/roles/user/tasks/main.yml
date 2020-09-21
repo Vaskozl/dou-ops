@@ -1,4 +1,12 @@
 ---
+- name: copy authorized_keys
+  authorzed_key:
+    user: "{{ ansible_user }}"
+    state: present
+    exclusive: True
+    key: "{{ item }}"
+  with_file:
+    - authorized_keys
 - name: check if neofetch config directory exists
   stat:
     path: "/home/{{ ansible_user }}/.config/neofetch"
