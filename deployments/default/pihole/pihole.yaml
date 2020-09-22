@@ -12,13 +12,13 @@ spec:
     version: 1.7.15
   values:
     serviceTCP:
-      loadBalancerIP: 192.168.1.11
+      loadBalancerIP: 192.168.1.16
       annotations:
         metallb.universe.tf/allow-shared-ip: pihole-svc
       type: LoadBalancer
 
     serviceUDP:
-      loadBalancerIP: 192.168.1.11
+      loadBalancerIP: 192.168.1.16
       annotations:
         metallb.universe.tf/allow-shared-ip: pihole-svc
       type: LoadBalancer
