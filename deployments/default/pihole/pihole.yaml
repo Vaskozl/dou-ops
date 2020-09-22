@@ -26,11 +26,11 @@ spec:
     dnsmasq:
       additionalHostsEntries:
       # Dnsmasq reads the /etc/hosts file to resolve ips. You can add additional entries if you like
-        - 192.168.1.16     pi.hole
-        - 192.168.1.181    pi0
-        - 192.168.1.11     pi1
-        - 192.168.1.72     pi2
-        - 192.168.1.254    gateway
+        - 192.168.1.16     pihole.lan pi.hole
+        - 192.168.1.181    pi0.lan
+        - 192.168.1.11     pi1.lan
+        - 192.168.1.72     pi2.lan
+        - 192.168.1.254    gateway.lan
 
     #TODO: Secure pihole
     adminPassword: admin
