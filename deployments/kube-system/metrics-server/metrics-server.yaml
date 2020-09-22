@@ -18,7 +18,7 @@ spec:
   values:
     image:
       repository: gcr.io/google_containers/metrics-server-arm64
-      tag: v0.3.7
+      tag: v0.3.6
     args:
       - --kubelet-insecure-tls=true
       - --kubelet-preferred-address-types=InternalIP,ExternalIP,Hostname
