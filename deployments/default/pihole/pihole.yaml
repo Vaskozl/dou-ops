@@ -1,0 +1,26 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: pihole
+  namespace: default
+spec:
+  releaseName: pihole
+  chart:
+    repository: https://mojo2600.github.io/pihole-kubernetes/
+    name: mojo2600/pihole
+    version: 1.7.15
+  values:
+    serviceTCP:
+      loadBalancerIP: 192.168.1.11
+      annotations:
+        metallb.universe.tf/allow-shared-ip: pihole-svc
+      type: LoadBalancer
+
+    serviceUDP:
+      loadBalancerIP: 192.168.1.11
+      annotations:
+        metallb.universe.tf/allow-shared-ip: pihole-svc
+      type: LoadBalancer
+    #TODO: Secure pihole
+    adminPassword: admin
