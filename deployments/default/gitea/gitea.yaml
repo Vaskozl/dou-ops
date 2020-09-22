@@ -4,9 +4,6 @@ kind: HelmRelease
 metadata:
   name: gitea
   namespace: default
-  annotations:
-    fluxcd.io/ignore: "false"
-    fluxcd.io/automated: "false"
 spec:
   releaseName: gitea
   helmVersion: v3
@@ -19,11 +16,12 @@ spec:
   values:
     image:
       repository: gitea/gitea
-      tag: 1.12.3
+      tag: linux-arm64
       pullPolicy: IfNotPresent
     service:
       http:
         loadBalancerIP: 192.168.1.17
+        clusterIP: 10.43.99.99
         type: LoadBalancer
     gitea:
       config:
@@ -43,7 +41,7 @@ spec:
           postgresql:
             enabled: true
     postgresql:
-      metrics:
+      etrics:
         enabled: true
         serviceMonitor:
           enabled: true
