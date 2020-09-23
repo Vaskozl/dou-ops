@@ -7,8 +7,6 @@ metadata:
 spec:
   releaseName: gitea
   helmVersion: v3
-  rollback:
-    enable: false
   chart:
     repository: https://dl.gitea.io/charts/
     name: gitea
