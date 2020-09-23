@@ -33,11 +33,8 @@ spec:
         - "git.i.lan"
     service:
       ssh:
-        type: LoadBalancer
+        loadBalancerIP: 192.168.1.17
         port: 22
-        externalIPs:
-        - 192.168.1.14
-        externalTrafficPolicy: Local
     gitea:
       config:
         APP_NAME: "Doudous' Gitea"
