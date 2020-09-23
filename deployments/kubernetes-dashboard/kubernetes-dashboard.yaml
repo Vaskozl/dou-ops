@@ -1,0 +1,19 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: kubernetes-dashboard
+  namespace: default
+spec:
+  releaseName: kubernetes-dashboard
+  chart:
+    repository: https://kubernetes.github.io/dashboard/
+    name: kubernetes-dashboard
+    version: 2.7.1
+  values:
+    ## Serve application over HTTP without TLS
+    protocolHttp: false
+    service:
+      type: LoadBalancer
+      externalPort: 443
+      loadBalancerIP: 192.168.1.20
