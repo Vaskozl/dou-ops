@@ -4,6 +4,9 @@ kind: HelmRelease
 metadata:
   name: gitea
   namespace: default
+  annotations:
+    fluxcd.io/ignore: "false"
+    fluxcd.io/automated: "false"
 spec:
   releaseName: gitea
   helmVersion: v3
