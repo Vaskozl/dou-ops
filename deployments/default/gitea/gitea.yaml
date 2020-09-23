@@ -18,6 +18,26 @@ spec:
       repository: gitea/gitea
       tag: linux-arm64
       pullPolicy: IfNotPresent
+    persistence:
+      enabled: true
+      size: 10Gi
+      storageClass: "nfs-client"
+    ingress:
+      enabled: true
+      annotations:
+        kubernetes.io/ingress.class: "internal"
+      hosts:
+      - "git.i.lan"
+      tls:
+      - hosts:
+        - "git.i.lan"
+    service:
+      ssh:
+        type: LoadBalancer
+        port: 22
+        externalIPs:
+        - 192.168.1.14
+        externalTrafficPolicy: Local
     gitea:
       config:
         APP_NAME: "Doudous' Gitea"
