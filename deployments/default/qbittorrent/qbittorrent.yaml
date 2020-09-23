@@ -21,6 +21,8 @@ spec:
       repository: linuxserver/qbittorrent
       tag: 14.2.5.99202004250119-7015-2c65b79ubuntu18.04.1-ls91
     timezone: "Europe/London"
+    puid: 1000
+    pgid: 1000
     umask: "022"
     guiService:
       type: ClusterIP
