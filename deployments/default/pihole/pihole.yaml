@@ -33,5 +33,7 @@ spec:
         - 192.168.1.17     gitea.lan
         - 192.168.1.18     i.lan
 
+    persistentVolumeClaim:
+      enabled: true
     #TODO: Secure pihole
     adminPassword: admin
