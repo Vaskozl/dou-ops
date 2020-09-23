@@ -35,26 +35,3 @@ spec:
       ssh:
         loadBalancerIP: 192.168.1.17
         port: 22
-    gitea:
-      config:
-        APP_NAME: "Doudous' Gitea"
-        respository:
-          DEFAULT_PRIVATE: true
-        admin:
-          DISABLE_REGULAR_ORG_CREATION: true
-        security:
-          PASSWORD_COMPLEXITY: "lower,upper"
-          MIN_PASSWORD_LENGTH: 12
-        service:
-          DISABLE_REGISTRATION: true
-          REQUIRE_SIGNIN_VIEW: true
-      database:
-        builtIn:
-          postgresql:
-            enabled: true
-    postgresql:
-      etrics:
-        enabled: true
-        serviceMonitor:
-          enabled: true
-          namespace: default
