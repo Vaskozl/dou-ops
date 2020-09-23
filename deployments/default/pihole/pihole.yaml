@@ -30,8 +30,7 @@ spec:
         - 192.168.1.181    pi0.lan
         - 192.168.1.11     pi1.lan
         - 192.168.1.72     pi2.lan
-        - 192.168.1.254    gateway.lan
-        - 192.168.1.17    gitea.lan
+        - 192.168.1.17     gitea.lan
 
     #TODO: Secure pihole
     adminPassword: admin

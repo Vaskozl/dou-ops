@@ -18,11 +18,6 @@ spec:
       repository: gitea/gitea
       tag: linux-arm64
       pullPolicy: IfNotPresent
-    service:
-      http:
-        loadBalancerIP: 192.168.1.17
-        clusterIP: 10.43.99.99
-        type: LoadBalancer
     gitea:
       config:
         APP_NAME: "Doudous' Gitea"
