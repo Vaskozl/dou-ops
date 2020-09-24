@@ -19,8 +19,8 @@ spec:
     webhook:
       enabled: true
     ingressShim:
-      defaultIssuerName: letsencrypt-staging
-      defaultIssuerKind: ClusterIssuer
+      defaultIssuerName: "letsencrypt-staging"
+      defaultIssuerKind: "ClusterIssuer"
 #     # Enabled once prometheus-operator is installed
 #     prometheus:
 #       enabled: true
