@@ -28,9 +28,6 @@ spec:
       type: ClusterIP
     btService:
       type: LoadBalancer
-      port: 50413
-      externalIPs:
-      - 192.168.1.22
       externalTrafficPolicy: Local
     ingress:
       enabled: true
