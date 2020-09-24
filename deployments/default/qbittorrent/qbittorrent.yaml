@@ -17,9 +17,17 @@ spec:
     name: qbittorrent
     version: 4.0.1
   values:
+    probes:
+      initialDelaySeconds: 600
+      failureThreshold: 50
+      timeoutSeconds: 100
+    readiness:
+      initialDelaySeconds: 600
+      failureThreshold: 50
+      timeoutSeconds: 100
     image:
       repository: linuxserver/qbittorrent
-      tag: 14.2.5.99202004250119-7015-2c65b79ubuntu18.04.1-ls91
+      tag: 14.2.5.99202004250119-7015-2c65b79ubuntu18.04.1-ls90
     timezone: "Europe/London"
     puid: 1000
     pgid: 1000
