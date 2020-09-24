@@ -18,5 +18,5 @@ spec:
     protocolHttp: true
     service:
       type: LoadBalancer
-      loadBalancerIP: 192.168.1.21
+      loadBalancerIP: 192.168.1.20
       externalPort: 80

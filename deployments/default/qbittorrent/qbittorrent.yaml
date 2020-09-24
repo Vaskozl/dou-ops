@@ -33,7 +33,8 @@ spec:
     pgid: 1000
     umask: "022"
     guiService:
-      type: ClusterIP
+      type: LoadBalancer
+      loadBalancerIP: 192.168.1.19
     btService:
       type: LoadBalancer
       externalTrafficPolicy: Local
@@ -43,9 +44,6 @@ spec:
         kubernetes.io/ingress.class: "internal"
       hosts:
       - "qb.i.lan"
-      tls:
-      - hosts:
-        - "qb.i.lan"
     persistence:
       config:
         enabled: true
