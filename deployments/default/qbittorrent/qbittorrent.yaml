@@ -42,6 +42,7 @@ spec:
       tls:
       - hosts:
         - "qb.sko.ai"
+        secretName: ingress-cert-qbittorrent
     persistence:
       config:
         enabled: true
