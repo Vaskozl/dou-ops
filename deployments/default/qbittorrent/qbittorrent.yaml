@@ -48,6 +48,9 @@ spec:
         size: 2Gi
       downloads:
         enabled: false
+      extraMounts:
+      - name: media
+        claimName: nfs-media-pvc
     resources:
       requests:
         memory: 250Mi

@@ -47,6 +47,9 @@ spec:
           medium: "Memory"
       data:
         enabled: false
+      extraMounts:
+      - name: media
+        claimName: nfs-media-pvc
     resources:
       requests:
         cpu: 35m
