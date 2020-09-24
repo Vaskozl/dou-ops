@@ -36,17 +36,7 @@ spec:
         - "plex.pi.sko.ai"
         secretName: ingress-cert-plex
     advertiseIp: "http://192.168.1.24:32400"
-    timezone: "America/New_York"
-    serviceTCP:
-      type: LoadBalancer
-      externalIPs:
-      - 192.168.1.24
-      externalTrafficPolicy: Local
-    serviceUDP:
-      type: LoadBalancer
-      externalIPs:
-      - 192.168.69.24
-      externalTrafficPolicy: Local
+    timezone: "Europe/London"
     persistence:
       config:
         storageClass: "nfs-client"
