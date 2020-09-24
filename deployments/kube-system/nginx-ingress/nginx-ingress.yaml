@@ -42,3 +42,5 @@ spec:
           memory: 500Mi
     defaultBackend:
       enabled: true
+      image:
+        repository: "k8s.gcr.io/defaultbackend-arm64"
