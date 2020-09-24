@@ -34,6 +34,7 @@ spec:
       enabled: true
       annotations:
         kubernetes.io/tls-acme: "true"
+        kubernetes.io/ingress.class: "internal"
       hosts:
       - "qb.pi.sko.ai"
       tls:
