@@ -21,7 +21,7 @@ spec:
   values:
     image:
       repository: linuxserver/plex
-      tag: latest
+      tag: 1.20.1.3252-a78fef9a9-ls117
       pullPolicy: IfNotPresent
     # hostNetwork: true
     ingress:
