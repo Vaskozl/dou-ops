@@ -43,9 +43,13 @@ spec:
       annotations:
         kubernetes.io/ingress.class: "internal"
       hosts:
+      - "qb.sko.ai"
       - "qb.i.lan"
       - "pi.sko.ai"
-      - "qb.sko.ai"
+      tls:
+      - hosts:
+        - "qb.sko.ai"
+        - "qb.i.lan"
     persistence:
       config:
         enabled: true
