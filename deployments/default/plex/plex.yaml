@@ -26,7 +26,7 @@ spec:
     # hostNetwork: true
     ingress:
       enabled: true
-      annotation:
+      annotations:
         kubernetes.io/tls-acme: "true"
         kubernetes.io/ingress.class: "internal"
       hosts:
