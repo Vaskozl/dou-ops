@@ -1,0 +1,50 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: radarr
+  namespace: default
+  annotations:
+    fluxcd.io/ignore: "false"
+    fluxcd.io/automated: "false"
+spec:
+  releaseName: radarr
+  helmVersion: v3
+  rollback:
+    enable: false
+  chart:
+    repository: https://k8s-at-home.com/charts/
+    name: radarr
+    version: 5.0.1
+  values:
+    image:
+      repository: linuxserver/radarr
+      tag: 3.0.0.3746-ls23
+    ingress:
+      enabled: true
+      annotations:
+        kubernetes.io/ingress.class: "internal"
+      hosts:
+      - "radarr.i.lan"
+    timezone: "Europe/London"
+    puid: 1000
+    pgid: 1000
+    persistence:
+      config:
+        enabled: true
+        storageClass: "nfs-client"
+        accessMode: ReadWriteOnce
+        size: 25Gi
+      media:
+        enabled: false
+      extraExistingClaimMounts:
+      - name: media-pv
+        existingClaim: nfs-media-pvc
+        mountPath: /media-pv
+        readOnly: false
+    resources:
+      requests:
+        memory: 350Mi
+        cpu: 25m
+      limits:
+        memory: 1500Mi
