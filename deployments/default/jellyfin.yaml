@@ -20,7 +20,7 @@ spec:
   values:
     image:
       repository: linuxserver/jellyfin
-      tag: latest
+      tag: arm64v8-20200922.5-unstable-ls101
       pullPolicy: IfNotPresent
     # hostNetwork: true
     ingress:
