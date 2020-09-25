@@ -26,7 +26,7 @@ spec:
       annotations:
         kubernetes.io/ingress.class: "internal"
       hosts:
-      - "jacket.i.lan"
+      - "jackett.i.lan"
     timezone: "Europe/London"
     puid: 1000
     pgid: 1000
