@@ -49,7 +49,7 @@ spec:
       downloads:
         enabled: false
       extraMounts:
-      - name: media
+      - name: media-pv
         claimName: nfs-media-pvc
     resources:
       requests:
