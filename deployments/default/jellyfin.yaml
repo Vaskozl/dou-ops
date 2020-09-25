@@ -8,6 +8,7 @@ metadata:
     replicas-max: "1"
     fluxcd.io/ignore: "false"
     fluxcd.io/automated: "true"
+    fluxcd.io/tag.chart-image: 'regexp:^(10\.[0-9]+\.[0-9]+.*)$'
 spec:
   releaseName: jellyfin
   helmVersion: v3
@@ -20,7 +21,7 @@ spec:
   values:
     image:
       repository: linuxserver/jellyfin
-      tag: arm64v8-20200922.5-unstable-ls101
+      tag: 10.6.4-1-ls75
       pullPolicy: IfNotPresent
     # hostNetwork: true
     ingress:
