@@ -40,11 +40,14 @@ spec:
       config:
         storageClass: "nfs-client"
         accessMode: ReadWriteOnce
-      data:
+      movies:
         enabled: false
-      extraMounts:
+      tvshows:
+        enabled: false
+      extraExistingClaimMounts:
       - name: media
-        claimName: nfs-media-pvc
+        mountPath: /media
+        existingClaim: nfs-media-pvc
     resources:
       requests:
         cpu: 35m
