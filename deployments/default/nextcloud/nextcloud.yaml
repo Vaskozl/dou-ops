@@ -14,6 +14,10 @@ spec:
     name: nextcloud
     version: 2.2.0
   values:
+    livenessProbe:
+      initialDelaySeconds: 600
+    readinessProbe:
+      initialDelaySeconds: 600
     image:
       repository: nextcloud
       tag: 19.0.3-apache
