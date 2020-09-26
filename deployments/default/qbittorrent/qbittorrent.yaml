@@ -36,10 +36,10 @@ spec:
         kubernetes.io/tls-acme: "true"
         kubernetes.io/ingress.class: "internal"
       hosts:
-      - "qb.pi.sko.ai"
+      - "qb.sko.ai"
       tls:
       - hosts:
-        - "qb.pi.sko.ai"
+        - "qb.sko.ai"
         secretName: ingress-cert-qbittorrent
     persistence:
       config:

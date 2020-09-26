@@ -30,10 +30,10 @@ spec:
         kubernetes.io/tls-acme: "true"
         kubernetes.io/ingress.class: "internal"
       hosts:
-      - "plex.pi.sko.ai"
+      - "plex.sko.ai"
       tls:
       - hosts:
-        - "plex.pi.sko.ai"
+        - "plex.sko.ai"
         secretName: ingress-cert-plex
     timezone: "Europe/London"
     advertiseIp: "http://192.168.1.20:32400"
