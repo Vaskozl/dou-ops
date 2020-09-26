@@ -1,0 +1,36 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: nextcloud
+  namespace: default
+spec:
+  releaseName: nextcloud
+  helmVersion: v3
+  rollback:
+    enable: false
+  chart:
+    repository: https://nextcloud.github.io/helm
+    name: nextcloud
+    version: 2.2.0
+  values:
+    image:
+      repository: nextcloud
+      tag: 19.0.3-apache
+    ingress:
+      enabled: true
+      annotations:
+        kubernetes.io/tls-acme: "true"
+        kubernetes.io/ingress.class: "internal"
+      hosts:
+      - "nc.i.lan"
+        #tls:
+        #- hosts:
+        #  - "qb.pi.sko.ai"
+        #  secretName: ingress-cert-nextcloud
+    nexctcloud:
+      host: "nc.i.lan"
+    persistence:
+      enabled: true
+      storageClass: "nfs-client"
+      size: 8Gi
