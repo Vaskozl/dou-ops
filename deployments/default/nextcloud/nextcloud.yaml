@@ -32,11 +32,12 @@ spec:
         kubernetes.io/ingress.class: "internal"
       hosts:
       - "nc.sko.ai"
+      - "nc.i.lan"
       tls:
       - hosts:
         - "nc.sko.ai"
         secretName: ingress-cert-nc
-    nexctcloud:
+    nextcloud:
       host: "nc.sko.ai"
     persistence:
       enabled: true
