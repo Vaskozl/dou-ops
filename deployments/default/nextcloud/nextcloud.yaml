@@ -31,13 +31,13 @@ spec:
         kubernetes.io/tls-acme: "true"
         kubernetes.io/ingress.class: "internal"
       hosts:
-      - "nc.pi.sko.ai"
+      - "next.pi.sko.ai"
       tls:
       - hosts:
-        - "nc.pi.sko.ai"
-        secretName: ingress-cert-nextcloud
+        - "nextnc.pi.sko.ai"
+        secretName: ingress-cert-next
     nexctcloud:
-      host: "nc.pi.sko.ai"
+      host: "next.pi.sko.ai"
     persistence:
       enabled: true
       storageClass: "nfs-client"
