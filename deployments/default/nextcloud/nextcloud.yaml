@@ -14,6 +14,10 @@ spec:
     name: nextcloud
     version: 2.2.0
   values:
+    # Image actually runs it on port 80
+    service:
+      type: ClusterIP
+      port: 80
     livenessProbe:
       initialDelaySeconds: 600
     readinessProbe:
@@ -37,4 +41,5 @@ spec:
     persistence:
       enabled: true
       storageClass: "nfs-client"
-      size: 8Gi
+      s3000ize: 8Gi
+
