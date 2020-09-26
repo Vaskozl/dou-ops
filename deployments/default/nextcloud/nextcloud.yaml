@@ -26,7 +26,7 @@ spec:
       - "nc.pi.sko.ai"
       tls:
       - hosts:
-        - "qb.pi.sko.ai"
+        - "nc.pi.sko.ai"
         secretName: ingress-cert-nextcloud
     nexctcloud:
       host: "nc.pi.sko.ai"
