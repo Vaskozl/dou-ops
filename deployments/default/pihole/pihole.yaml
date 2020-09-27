@@ -24,14 +24,11 @@ spec:
     dnsmasq:
       additionalHostsEntries:
       # Dnsmasq reads the /etc/hosts file to resolve ips. You can add additional entries if you like
-        - 192.168.1.16     pihole.lan pi.hole
-        - 192.168.1.181    pi0.lan
+        - 192.168.1.10     pi0.lan
         - 192.168.1.11     pi1.lan
-        - 192.168.1.72     pi2.lan
-        - 192.168.1.17     gitea.lan
+        - 192.168.1.12     pi2.lan
+        - 192.168.1.16     pihole.lan pi.hole
         - 192.168.1.18     i.lan
-        - 192.168.1.19     qb.lan
-        - 192.168.1.20     dashboard.lan
     persistentVolumeClaim:
       enabled: true
       existingClaim: pihole
