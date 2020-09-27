@@ -7,6 +7,10 @@ helm:
 image:
   repository: raspbernetes/helm-operator
   tag: v1.2.0
+git:
+  pollInterval: "5m"
+chartsSyncInterval: "5m"
+statusUpdateInterval:  "5m"
 # # Enabled once prometheus-operator is installed
 # prometheus:
 #   enabled: false
