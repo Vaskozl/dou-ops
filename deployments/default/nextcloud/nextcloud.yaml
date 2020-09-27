@@ -30,6 +30,7 @@ spec:
       annotations:
         kubernetes.io/tls-acme: "true"
         kubernetes.io/ingress.class: "internal"
+        nginx.ingress.kubernetes.io/proxy-body-size: "32m"
       hosts:
       - "nc.sko.ai"
       - "nc.i.lan"
@@ -42,5 +43,5 @@ spec:
     persistence:
       enabled: true
       storageClass: "nfs-client"
-      s3000ize: 8Gi
+      size: 256Gi
 
