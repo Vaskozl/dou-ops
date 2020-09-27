@@ -19,9 +19,9 @@ spec:
       type: ClusterIP
       port: 80
     livenessProbe:
-      initialDelaySeconds: 600
+      initialDelaySeconds: 100
     readinessProbe:
-      initialDelaySeconds: 600
+      initialDelaySeconds: 100
     image:
       repository: nextcloud
       tag: 19.0.3-apache
