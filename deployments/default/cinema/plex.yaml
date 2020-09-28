@@ -39,14 +39,10 @@ spec:
     advertiseIp: "http://192.168.1.20:32400"
     serviceTCP:
       type: LoadBalancer
-      externalIPs:
-      - 192.168.1.20
-      externalTrafficPolicy: Local
+      loadBalancerIP: 192.168.1.20
     serviceUDP:
       type: LoadBalancer
-      externalIPs:
-      - 192.168.1.20
-      externalTrafficPolicy: Local
+      loadBalancerIP: 192.168.1.20
     persistence:
       config:
         storageClass: "nfs-client"
