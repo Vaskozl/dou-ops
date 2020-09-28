@@ -31,6 +31,8 @@ spec:
         kubernetes.io/tls-acme: "true"
         kubernetes.io/ingress.class: "internal"
         nginx.ingress.kubernetes.io/proxy-body-size: "32m"
+        nginx.ingress.kubernetes.io/configuration-snippet: |
+          more_set_headers "Content-Security-Policy: default-src 'unsafe-inline' *.sko.ai; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; frame-src *; img-src * data: blob:; font-src 'self' data:; media-src *; connect-src *; object-src 'none'; base-uri 'self';";
       hosts:
       - "nc.sko.ai"
       - "nc.i.lan"
