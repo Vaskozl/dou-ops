@@ -11,11 +11,11 @@ git:
   pollInterval: "5m"
 chartsSyncInterval: "5m"
 statusUpdateInterval:  "5m"
-# # Enabled once prometheus-operator is installed
-# prometheus:
-#   enabled: false
-#   serviceMonitor:
-#     create: false
-#     namespace: flux
-#     interval: 30s
-#     scrapeTimeout: 10s
+# Enabled once prometheus-operator is installed
+prometheus:
+  enabled: false
+  serviceMonitor:
+    create: false
+    namespace: flux
+    interval: 30s
+    scrapeTimeout: 10s
