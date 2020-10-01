@@ -14,7 +14,7 @@ spec:
       paths:
       - backend:
           serviceName: code-server
-          servicePort: 8443
+          servicePort: 8080
         path: /
   tls:
   - hosts:
@@ -28,8 +28,8 @@ metadata:
 spec:
   ports:
   - protocol: TCP
-    port: 8443
-    targetPort: 8443
+    port: 8080
+    targetPort: 8080
   selector:
     app: code-server
   type: LoadBalancer
@@ -51,20 +51,15 @@ spec:
         app: code-server
     spec:
       containers:
-      - image: linuxserver/code-server:v3.5.0-ls48
+      - image: codercom/code-server:3.5.0
         name: code-server
         env:
-        - name: SUDO_PASSWORD
-          value: toor
-        envFrom:
-        - secretRef:
-            name: secret-code-server
         ports:
-        - containerPort: 8443
+        - containerPort: 8080
           name: code-server
         volumeMounts:
         - name: pv-code-server
-          mountPath: /config
+          mountPath: /home/coder
       volumes:
       - name: pv-code-server
         persistentVolumeClaim:
