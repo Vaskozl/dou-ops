@@ -29,11 +29,13 @@ spec:
       annotations:
         kubernetes.io/tls-acme: "true"
         kubernetes.io/ingress.class: "internal"
+        nginx.ingress.kubernetes.io/auth-url: "https://gate.sko.ai/api/verify"
+        nginx.ingress.kubernetes.io/auth-signin: "https://gate.sko.ai/"
       hosts:
-      - "jf.pi.sko.ai"
+      - "jf.sko.ai"
       tls:
       - hosts:
-        - "jf.pi.sko.ai"
+        - "jf.sko.ai"
         secretName: ingress-cert-jellyfin
     advertiseIp: "http://192.168.1.24:32400"
     timezone: "Europe/London"
@@ -47,7 +49,7 @@ spec:
         enabled: false
       extraExistingClaimMounts:
       - name: media
-        mountPath: /media
+        mountPath: /media-pv
         existingClaim: nfs-media-pvc
     resources:
       requests:
