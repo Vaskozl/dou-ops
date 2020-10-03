@@ -21,7 +21,7 @@ spec:
   values:
     image:
       repository: linuxserver/jellyfin
-      tag: 10.6.4-1-ls75
+      tag: 10.6.4-1-ls76
       pullPolicy: IfNotPresent
     # hostNetwork: true
     ingress:
