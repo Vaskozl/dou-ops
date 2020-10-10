@@ -4,6 +4,29 @@
 # - name: Reset dpkg
 #   command: dpkg --configure -a
 
+
+- name: Add automatic fancontrol script
+  copy:
+    src: fancontrol.py
+    dest: "/usr/bin/fancontrol.py"
+    group: "root"
+    owner: "root"
+    mode: 0755
+
+- name: Add automatic fancontrol service
+  copy:
+    src: fancontrol.service
+    dest: "/etc/systemd/system/fancontrol.service"
+    group: "root"
+    owner: "root"
+    mode: 0644
+
+- name: Enable the fancontrol
+  service:
+    name: fancontrol
+    enabled: yes
+    state: restarted
+
 # Contains log2ram, docker-ctop, bpytop
 - name: Add log2ram deb key.
   apt_key:
@@ -38,6 +61,7 @@
   retries: 5
   until: apt_update is success
 
+
 - name: Install Common Packages
   apt:
     name:
@@ -58,6 +82,7 @@
       - psmisc
       - python3
       - python3-pip
+      - python3-gpiozero
       - rsync
       - software-properties-common
       - traceroute
@@ -65,7 +90,6 @@
       - wget
       - log2ram
       - bpytop
-      - docker-ctop
     install_recommends: false
     update_cache: true
     # Need the force_apt_get until
@@ -198,6 +222,6 @@
     path: /boot/firmware/syscfg.txt
     marker: "# {mark} ANSIBLE OVERCLOCK CPU"
     block: |
-      over_voltage=2
-      arm_freq=1750
+      over_voltage=0
+      arm_freq=1500
   when: deploy_target != 'vagrant'
