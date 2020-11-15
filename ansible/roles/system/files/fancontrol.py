@@ -18,7 +18,7 @@ def get_temp():
 
 if __name__ == '__main__':
     # Validate the on and off thresholds
-    fan = PWMOutputDevice(GPIO_PIN, initial_value=1.0, frequency=80000)
+    fan = PWMOutputDevice(GPIO_PIN, initial_value=1.0, frequency=100)
     fan.on()
 
     err_i = 0
@@ -38,9 +38,12 @@ if __name__ == '__main__':
 
         duty = K_p * err + K_d * err_d + K_i * err_i
         duty = max(0.0,min(duty,1.0))
+        # Duty cycles less than 10% don't spin up the fan at all
+        if duty < 0.10:
+            duty = 0.0
 
         # Convert err to a duty cycle between 0.0 and 1.0
         fan.value = duty
-        print("Current temp is %.2fC | PWM: %.2f" % (temp, duty))
-        print("err: %.2f, integral: %.2f" % (err, err_i))
+        #print("Current temp is %.2fC | PWM: %.2f" % (temp, duty))
+        #print("err: %.2f, integral: %.2f" % (err, err_i))
         time.sleep(1.0)
