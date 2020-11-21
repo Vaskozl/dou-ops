@@ -1,4 +1,7 @@
-# dou-ops
+# dou-ops - Old repo
+
+New-repo: https://github.com/Vaskozl/home-infra
+
 Devops for a k3s Raspberry Pi cluster.
 
 This repo is deprecated in favour of the GitOps toolkit:
